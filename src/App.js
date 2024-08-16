@@ -1,24 +1,39 @@
-import logo from './logo.svg';
+import React from 'react';
+import logo from './Logo.png';
 import './App.css';
+import About from './About';
+import Acc from './Acc';  // Assurez-vous que ce fichier est nommé `Acc.js` et exporte le composant Acc
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'; 
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <div className='image-header'>
+            <img src={logo} className="App-logo" alt="logo" />
+          </div>
+          
+          <nav>
+            <ul>
+              <li className="Accueil">
+                <Link to="/">Accueil</Link>
+              </li>
+              <li className="A-Propos">
+                <Link to="/about">À Propos</Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        
+        <main>
+          <Routes>
+            <Route path="/" element={<Acc />} />
+            <Route path="/about" element={<About />} /> 
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
